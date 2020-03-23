@@ -22,3 +22,15 @@ after_success:
   - docker push bidego/complex-app-server
   - docker push bidego/complex-app-worker
 
+deploy:
+  edge: true
+  provider: "elasticbeanstalk"
+  region: "us-east-2"
+  app: educacion-digital
+  env: EducacionDigital-env
+  bucket_name: elasticbeanstalk-us-east-2-950026605317
+  bucket_path: educacion-digital
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
