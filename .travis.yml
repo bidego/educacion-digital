@@ -3,14 +3,14 @@ services:
   - docker
 
 before_install:
-  - docker build -t bidego/complex-app-ed -f ./ed/Dockerfile.dev ./ed
+  - docker build -t bidego/complex-app-ed -f ./edi/Dockerfile.dev ./edi
 
 script:
   - docker run -e CI=true bidego/complex-app-test npm test
 
 after_success:
 
-  - docker build -t bidego/complex-app-ed ./ed
+  - docker build -t bidego/complex-app-edi ./edi
   - docker build -t bidego/complex-app-nginx ./nginx
   - docker build -t bidego/complex-app-server ./server
   - docker build -t bidego/complex-app-worker ./worker
