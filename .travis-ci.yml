@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t bidego/complex-app -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true bidego/complex-app npm test
+
+after_success:
+  - docker build -t bidego/complex-app-client ./client
+  - docker build -t bidego/complex-app-nginx ./nginx
+  - docker build -t bidego/complex-app-server ./server
+  - docker build -t bidego/complex-app-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push bidego/complex-app-client
+  - docker push bidego/complex-app-nginx
+  - docker push bidego/complex-app-server
+  - docker push bidego/complex-app-worker
+  
