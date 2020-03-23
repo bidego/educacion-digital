@@ -31,7 +31,7 @@ services:
       - PGUSER=postgres
       - PGHOST=postgres
       - PGPORT=5432
-      - PGDATABASE=postgres
+      - PGDATABASE=educacion-digital-postgres
       - PGPASSWORD=postgres_password
   client:
     build:

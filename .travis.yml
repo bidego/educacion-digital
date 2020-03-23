@@ -9,6 +9,7 @@ script:
   - docker run -e CI=true bidego/complex-app npm test
 
 after_success:
+
   - docker build -t bidego/complex-app-client ./client
   - docker build -t bidego/complex-app-nginx ./nginx
   - docker build -t bidego/complex-app-server ./server
@@ -20,4 +21,4 @@ after_success:
   - docker push bidego/complex-app-nginx
   - docker push bidego/complex-app-server
   - docker push bidego/complex-app-worker
-  
+
