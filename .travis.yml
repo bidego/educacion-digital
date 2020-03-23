@@ -10,7 +10,6 @@ script:
 
 after_success:
 
-  - docker build -t bidego/complex-app-client ./client
   - docker build -t bidego/complex-app-ed ./ed
   - docker build -t bidego/complex-app-nginx ./nginx
   - docker build -t bidego/complex-app-server ./server
@@ -18,7 +17,6 @@ after_success:
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push bidego/complex-app-client
   - docker push bidego/complex-app-ed
   - docker push bidego/complex-app-nginx
   - docker push bidego/complex-app-server
