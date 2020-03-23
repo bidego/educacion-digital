@@ -12,13 +12,13 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client","server"],
+            "links": ["ed","server"],
             "memory": 128
         },
         {
-            "name": "client",
-            "image": "bidego/complex-app-client",
-            "hostname": "client",
+            "name": "ed",
+            "image": "bidego/complex-app-ed",
+            "hostname": "ed",
             "essential": false,
             "memory": 128
         },
