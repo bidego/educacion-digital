@@ -17,7 +17,7 @@ after_success:
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push bidego/complex-app-ed
+  - docker push bidego/complex-app-edi
   - docker push bidego/complex-app-nginx
   - docker push bidego/complex-app-server
   - docker push bidego/complex-app-worker
