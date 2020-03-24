@@ -2,7 +2,7 @@ version: '3'
 services:
   nginx:
     depends_on:
-      - edi
+      - client
       - api
     restart: "always"
     build:
@@ -33,13 +33,13 @@ services:
       - PGPORT=5432
       - PGDATABASE=educacion-digital-postgres
       - PGPASSWORD=postgres_password
-  edi:
+  client:
     build:
       dockerfile: Dockerfile.dev
-      context: ./edi
+      context: ./client
     volumes:
       - /app/node_modules
-      - ./edi:/app
+      - ./client:/app
   worker:
     depends_on:
       - redis
