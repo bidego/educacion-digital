@@ -14,7 +14,7 @@ spec:
         spec:
             containers:
                 -   name: server
-                    image: bidego/complex-app-server
+                    image: bidego/educacion-digital-server
                     ports:
                         - containerPort: 5000
                     env:
