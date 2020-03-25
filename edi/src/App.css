@@ -63,7 +63,18 @@
   .Login-form, .Signup-form {
     flex: 2;
   }
-}
+  .Screen-header, .Screen-content {
+    flex-direction: column;
+  }
+  .Screen-left {
+    padding-top:0px;
+    flex: 1;
+    display:inline-flex;
+  }
+  .Screen-right {
+    padding-top:5px;
+    flex: 1;
+  }}
 @media only screen and (min-width: 600px) {
   .Login-content,.Signup-content {
     background-color: #fff;
@@ -82,15 +93,15 @@
   .Login-form, .Signup-form {
     flex: 2;
   }
-}
-.Screen-left {
-  padding-top:0px;
-  flex: 1;
-  display:inline-flex;
-}
-.Screen-right {
-  padding-top:5px;
-  flex: 3;
+  .Screen-left {
+    padding-top:0px;
+    flex: 3;
+    display:inline-flex;
+  }
+  .Screen-right {
+    padding-top:5px;
+    flex: 2;
+  }
 }
 
 .Button-group {

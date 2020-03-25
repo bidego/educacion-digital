@@ -57,7 +57,7 @@ const Courses = (props:any) => {
             </Container>
             <Container className="Screen-content">
                 <section className="Screen-left">
-                    <ReactPlayer
+                <ReactPlayer
                         title={activeSource.title}
                         url={activeSource.url}
                         config={{
@@ -66,6 +66,7 @@ const Courses = (props:any) => {
                                     showinfo: 1 }
                                 }
                             }}
+                        width="100%"
                     />
                 </section>
                 <section className="Screen-right">
