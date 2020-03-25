@@ -47,7 +47,7 @@ const Signup = (props:any) => {
                     <FormControl  
                         type="re-password"
                         placeholder="Confirma contraseña" />
-                    <ButtonGroup size="lg" className="mt-3 pull-right">
+                    <ButtonGroup size="lg" className="Form-btns mt-3 pull-right">
                         <BtnConfirm className="pull-right">Reset</BtnConfirm>
                         <BtnConfirm onClick={authHandler} className="ml-3 pull-right">Confirmar</BtnConfirm>
                     </ButtonGroup>

@@ -47,7 +47,7 @@ const Login = (props:any) => {
                         name="password"  
                         type="password"
                         placeholder="Contraseña" />
-                    <ButtonGroup size="lg" className="mt-3 pull-right">
+                    <ButtonGroup size="lg" className="Form-btns mt-3 pull-right">
                         <BtnConfirm className="pull-right">Reset</BtnConfirm>
                         <BtnConfirm className="ml-3 pull-right" onClick={authHandler}>Confirmar</BtnConfirm>
                     </ButtonGroup>
