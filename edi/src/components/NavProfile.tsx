@@ -24,10 +24,10 @@ const NavProfile = (props:any) => {
             <Nav>
                 <ButtonGroup className="Button-group">
                     <Link to="/login">
-                        <Btn className="ml-2" variant="outline-secondary" name="Log In">Log In</Btn>
+                        <Btn className="ml-2" variant="outline-secondary" name="Log In">Ingresar</Btn>
                     </Link>
                     <Link to="/signup">
-                        <Btn className="ml-2" variant="outline-secondary" name="Sign In">Sign In</Btn>
+                        <Btn className="ml-2" variant="outline-secondary" name="Sign In">Registrase</Btn>
                     </Link>
                 </ButtonGroup>
             </Nav>
