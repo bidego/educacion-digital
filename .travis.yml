@@ -13,7 +13,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project rn-shop-app-80b0f
   - gcloud config set compute/zone southamerica-east1-a
-  - gcloud container clusters get-credentials complex-app-cluester
+  - gcloud container clusters get-credentials complex-app-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t bidego/educacion-digital-test -f ./client/Dockerfile.dev ./client
 script:
