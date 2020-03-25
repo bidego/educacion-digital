@@ -1,4 +1,4 @@
-docker build -t bidego/educacion-digital-edi:latest -t bidego/educacion-digital-edi:$SHA -f ./client/Dockerfile ./client
+docker build -t bidego/educacion-digital-edi:latest -t bidego/educacion-digital-edi:$SHA -f ./edi/Dockerfile ./edi
 docker build -t bidego/educacion-digital-server:latest -t bidego/educacion-digital-server:$SHA -f ./server/Dockerfile ./server
 docker build -t bidego/educacion-digital-worker:latest -t bidego/educacion-digital-worker:$SHA -f ./worker/Dockerfile ./worker
 docker push bidego/educacion-digital-edi:latest
