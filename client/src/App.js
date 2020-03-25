@@ -6,9 +6,6 @@ import OtherPage from './OtherPage';
 import Fib from './Fib';
 
 class App extends Component {
-  componentDidMount(){
-    document.title = "Educacion Digital"
-  }
   render() {
     return (
       <Router>
