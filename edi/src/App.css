@@ -28,14 +28,21 @@
   color: #21dafb;
 }
 
-.Search-content {
+.Search-header, .Screen-content {
   padding: 40px;
 }
-.Screen-content {
+.Screen-header, .Screen-content {
   background-color: #fff;
   display: flex;
   flex-direction: row;
   padding-top: 40px;
+}
+.Sources-list {
+  list-style-type:  none;
+}
+.Sources-list li {
+  font-size: 1.2em;
+  padding: 20px;
 }
 @media only screen and (max-width: 600px) {
   .Login-content,.Signup-content {
