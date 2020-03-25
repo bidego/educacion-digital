@@ -11,7 +11,7 @@ const Home = (props:any) => {
             <Btn variant="outline-success">Buscar</Btn>
             </Form>
             <TiGroup size={96} />
-            <h1>Educacion Digital</h1>
+            <h1>Educación Digital</h1>
             <p>
                 El patio de intercambio de conocimientos
             </p>
