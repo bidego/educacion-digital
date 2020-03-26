@@ -21,9 +21,17 @@ const pgClient = new Pool({
 pgClient.on('error', () => console.log('Lost PG connection'));
 
 pgClient
-  .query('CREATE TABLE IF NOT EXISTS values (number INT)')
+  .query('CREATE TABLE IF NOT EXISTS courses (title VARCHAR not null, url VARCHAR not null)')
   .catch(err => console.log(err));
-
+pgClient
+  .query("INSERT INTO courses (title, url) VALUES ('¿Que es PLE?','https://www.youtube.com/watch?v=d7PR_uo5gaE')")
+  .catch(err => console.log(err));
+pgClient
+  .query("INSERT INTO courses (title, url) VALUES ('PLE Entornos Personales de Aprendisaje','https://www.youtube.com/watch?v=MPUlHtYfSzA')")
+  .catch(err => console.log(err));
+pgClient
+  .query("INSERT INTO courses (title, url) VALUES ('PLE by Jordi Adell','https://www.youtube.com/watch?v=blzYQlj63Cc')")
+  .catch(err => console.log(err));
 // Redis Client Setup
 const redis = require('redis');
 const redisClient = redis.createClient({
@@ -39,32 +47,33 @@ app.get('/', (req, res) => {
   res.send('Hi');
 });
 
-app.get('/values/all', async (req, res) => {
-  const values = await pgClient.query('SELECT * from values');
+app.get('/courses/all', async (req, res) => {
+  const values = await pgClient.query('SELECT * from courses');
 
   res.send(values.rows);
 });
 
-app.get('/values/current', async (req, res) => {
-  redisClient.hgetall('values', (err, values) => {
-    res.send(values);
+app.get('/courses/current', async (req, res) => {
+  redisClient.hgetall('courses', (err, courses) => {
+    res.send(courses);
   });
 });
 
-app.post('/values', async (req, res) => {
-  const index = req.body.index;
+app.post('/courses', async (req, res) => {
+  const { title, url } = req.body;
 
-  if (parseInt(index) > 40) {
-    return res.status(422).send('Index too high');
+  
+  if (title == "" || url == "") {
+    return res.status(422).send('Faltan datos');
   }
 
-  redisClient.hset('values', index, 'Nothing yet!');
-  redisPublisher.publish('insert', index);
-  pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
+  redisClient.hset('courses', title + value, 'Nothing yet!');
+  redisPublisher.publish('insert', [title, url]);
+  pgClient.query('INSERT INTO courses(title,url) VALUES($1,$2)', [title,url]);
 
   res.send({ working: true });
 });
 
 app.listen(5000, err => {
-  console.log('Listening');
+  console.log('Listening in port 5000');
 });

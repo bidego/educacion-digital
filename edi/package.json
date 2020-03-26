@@ -13,6 +13,7 @@
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
     "@types/react-redux": "^7.1.7",
+    "axios": "^0.19.2",
     "base-64": "^0.1.0",
     "bootstrap": "^4.4.1",
     "moment": "^2.24.0",

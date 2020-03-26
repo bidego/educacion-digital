@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { Container, Form, FormControl } from 'react-bootstrap';
 import { TiMortarBoard } from 'react-icons/ti';
 import { Btn } from '../components';
 import ReactPlayer from 'react-player';
+import axios from 'axios';
 
 const Courses = (props:any) => {
-    const sources = [
+    const mock = [
         {
-            title:"PLE Entornos Personales de Aprendisaje",
+            title:"Entornos Personales de Aprendisaje",
             url:"https://www.youtube.com/watch?v=MPUlHtYfSzA"
         },
         {
-            title: "¿Que es PLE?",
+            title: "Que es PLE?",
             url: "https://www.youtube.com/watch?v=d7PR_uo5gaE"
         },
         {
@@ -19,8 +20,36 @@ const Courses = (props:any) => {
             url: "https://www.youtube.com/watch?v=blzYQlj63Cc"
         }
     ];
-    const [ activeSource, setActiveSource ] = useState(sources[Math.floor(Math.random() * 3)]);
+    const [ activeSource, setActiveSource ] = useState(mock[Math.floor(Math.random() * 3)]);
+    const [ isLoading, setIsLoading ] = useState(false);
+    const [ sources, setSources ] = useState(mock);
+    const [ values, setValues ] = useState([]);
+    const [ index, setIndex ] = useState('');
+        
+    const fetchCourses = useCallback(async () => {
+        const coursesResult = await axios.get('/api/courses/all');
+        setSources(coursesResult.data);
+    },[setSources]);
+    useEffect( () => {
+        fetchCourses();
+    }, [fetchCourses])
+    
+    useEffect(() => {
+        setIsLoading(true);
+        fetchCourses().then(()=> {
+            setIsLoading(false);
+        });
+    },[setIsLoading]);
 
+    const handleSubmit = async (event:any) => {
+        event.preventDefault();
+    
+        await axios.post('/api/values', {
+            index: index
+        });
+        setIndex('');
+    };
+            
     const handleYoutubelClick = async() => {
         const res = await fetch("https://www.youtube.com/results?search_query=una+cerveza");
         console.log(res.json());
