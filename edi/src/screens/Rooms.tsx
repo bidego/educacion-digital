@@ -1,28 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import { TiGroup } from 'react-icons/ti';
 import { Btn } from '../components';
+//import io from 'socket.io-client';
+
+//const socket = io.connect('http://localhost:3001');
 
 const Rooms = (props:any) => {
+    const streamingData = "";
+
+    /*
+    useEffect(() => {
+        function receiveMessage(m) {
+          console.log(m)
+          if(role === 'server') {
+            audio.src = m.path;
+            audio.play();
+          }
+          setPlaying(m.name);
+        }
+        function stopEvent(m) {
+          console.log(m)
+          if(role === 'server') {
+            audio.pause();
+          }
+          setPlaying('');
+        }
+        socket.on('play stream', function(image) {
+            streamingData = image;
+        });
+        return () => {
+          socket.off('play', receiveMessage );
+          socket.on('stop', stopEvent);
+        }
+      }, [role, audio]);
+    */
     return(
         <header className="App-header">
-            <TiGroup size={96} />
-            <h1>Educacion Digital</h1>
-            <p>
-                El patio de intercambio de conocimientos
-            </p>
-            <a
-                className="App-link"
-                href="https://google.com?q=Educacion+Digital"
-                target="_blank"
-                rel="noopener noreferrer"
-                hidden
-            >Entrá</a>
-            <Form inline>
-            <FormControl type="text" placeholder="¿Que desea buscar?" className="mr-sm-2" />
-            <Btn variant="outline-success">Buscar</Btn>
-            </Form>
-          </header>
+            <h1>Rooms</h1>
+            <img src={streamingData}></img>
+        </header>
     )
 }
 
