@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+const server = require('http').Server(app),
+		  io = require('socket.io')(server);
+		
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -74,6 +77,34 @@ app.post('/courses', async (req, res) => {
   res.send({ working: true });
 });
 
-app.listen(5000, err => {
+io.on('connection', (socket) => {
+	console.log('Connected OK');
+	socket.on('streaming', (image) => {
+    console.log(image);
+		io.emit('play stream', image);
+	})
+});
+
+server.listen(5000, err => {
   console.log('Listening in port 5000');
 });
+/*
+const		app2 = express(),
+		server = require('http').Server(app2),
+		io = require('socket.io')(server),
+		PORT = 5001,
+		publicDir = `${__dirname}/public`
+
+io.on('connection', (socket) => {
+	console.log('Connected OK');
+	socket.on('streaming', (image) => {
+    console.log(image);
+		io.emit('play stream', image);
+	})
+});
+
+
+server.listen(PORT, () => {
+	console.log(`socketIO en localhost: ${PORT}`);
+});
+*/

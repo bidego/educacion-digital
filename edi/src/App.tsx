@@ -7,7 +7,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Navigator } from './components';
-import { Home, Rooms, Courses, Projects, Login, Signup } from './screens';
+import { Home, Rooms, Courses, Projects, Login, Signup, Booth } from './screens';
 
 import authReducer from './store/reducers/auth';
 import coursesReducer from './store/reducers/courses';
@@ -37,6 +37,7 @@ function App() {
           <Route path="/rooms" component={Rooms} />
           <Route path="/courses" component={Courses} />
           <Route path="/projects" component={Projects} />
+          <Route path="/booth" component={Booth} />
         </Switch>
       </Router>
     </Provider>

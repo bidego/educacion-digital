@@ -13,9 +13,11 @@
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
     "@types/react-redux": "^7.1.7",
+    "@types/socket.io-client": "^1.4.32",
     "axios": "^0.19.2",
     "base-64": "^0.1.0",
     "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
     "moment": "^2.24.0",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
@@ -28,6 +30,7 @@
     "react-scripts": "^3.4.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "typescript": "^3.8.3"
   },
   "scripts": {

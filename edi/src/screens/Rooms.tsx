@@ -1,44 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import { TiGroup } from 'react-icons/ti';
 import { Btn } from '../components';
-//import io from 'socket.io-client';
+import io from 'socket.io-client';
 
-//const socket = io.connect('http://localhost:3001');
+const socket = io.connect('api/');
 
 const Rooms = (props:any) => {
-    const streamingData = "";
+    const [ imageData, setImageData ] = useState("");
 
-    /*
     useEffect(() => {
-        function receiveMessage(m) {
-          console.log(m)
-          if(role === 'server') {
-            audio.src = m.path;
-            audio.play();
-          }
-          setPlaying(m.name);
-        }
-        function stopEvent(m) {
-          console.log(m)
-          if(role === 'server') {
-            audio.pause();
-          }
-          setPlaying('');
-        }
-        socket.on('play stream', function(image) {
-            streamingData = image;
+        console.log("montado")
+        socket.on('play stream', function(image:any) {
+            setImageData(image);
         });
-        return () => {
-          socket.off('play', receiveMessage );
-          socket.on('stop', stopEvent);
-        }
-      }, [role, audio]);
-    */
+    }, [imageData]);
+
     return(
         <header className="App-header">
             <h1>Rooms</h1>
-            <img src={streamingData}></img>
+            <img src={imageData} alt="streaming" />
         </header>
     )
 }
