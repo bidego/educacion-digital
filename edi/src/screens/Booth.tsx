@@ -4,7 +4,7 @@ import { TiGroup } from 'react-icons/ti';
 import { Btn } from '../components';
 import io from 'socket.io-client';
 
-const socket = io.connect('api/');
+const socket = io.connect('34.95.219.58/api/');
 
 const Booth = (props:any) => {
   const streamingData = "";
